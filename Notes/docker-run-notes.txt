@@ -1,0 +1,5 @@
+# MySQL
+docker run --name mysql    -p 3306:3306 --net debug -e MYSQL_ROOT_PASSWORD=root   -d mysql
+
+# Postgres
+docker run --name postgres -p 5432:5432 --net debug -e POSTGRES_PASSWORD=postgres -d postgres

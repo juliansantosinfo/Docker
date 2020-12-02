@@ -1,0 +1,28 @@
+version: "3.3"
+
+services: 
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    restart: "no"
+    environment: 
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes: 
+      - ./volume:/var/lib/postgresql/data
+    ports: 
+      - 5432:5432
+
+  pgadmin4:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    restart: "no"
+    environment: 
+      PGADMIN_DEFAULT_EMAIL: postgres@postgres.com
+      PGADMIN_DEFAULT_PASSWORD: postgres
+      PGADMIN_LISTEN_PORT: 8081
+    ports: 
+      - 8081:8081
+    depends_on: 
+      - postgres

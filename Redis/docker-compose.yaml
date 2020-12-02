@@ -1,0 +1,12 @@
+version: "3.3"
+
+services: 
+  redis:
+    image: redis
+    container_name: redis
+    volumes: 
+      - ./volume/data:/data
+      - ./volume/conf:/usr/local/etc/redis/
+    ports: 
+      - 6379:6379
+    restart: "no"

@@ -1,0 +1,12 @@
+version: "3.3"
+
+services: 
+  nginx:
+    image: nginx
+    container_name: nginx
+    restart: "no"
+    ports: 
+      - 80:80
+      - 443:443
+    volumes: 
+      - ./volume:/etc/nginx/
