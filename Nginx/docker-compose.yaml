@@ -9,4 +9,6 @@ services:
       - 80:80
       - 443:443
     volumes: 
-      - ./volume:/etc/nginx/
+      - ./config/nginx.conf:/etc/nginx/nginx.conf
+      - ./config/sites-available:/etc/nginx/sites-available
+      - ./config/sites-enabled:/etc/nginx/sites-enabled
