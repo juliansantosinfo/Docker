@@ -1,0 +1,18 @@
+version: "3.3"
+
+services:
+  
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: "no"
+    env_file:
+      - .env
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "MSSQLPass123"
+    volumes:
+      - ./docker/mssql:/var/opt/mssql:delegated
+    ports: 
+      - 1433:1433
