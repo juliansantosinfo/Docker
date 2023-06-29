@@ -5,7 +5,7 @@ services:
   postgres:
     image: postgres
     container_name: postgres
-    restart: "no"
+    restart: "yes"
     environment: 
       POSTGRES_PASSWORD: postgres
       PGDATA: /var/lib/postgresql/data/pgdata
@@ -13,16 +13,24 @@ services:
       - ./data:/var/lib/postgresql/data
     ports: 
       - 5432:5432
+    networks:
+      - network-postgresql
 
   pgadmin4:
     image: dpage/pgadmin4
     container_name: pgadmin4
-    restart: "no"
+    restart: "yes"
     environment: 
       PGADMIN_DEFAULT_EMAIL: postgres@postgres.com
       PGADMIN_DEFAULT_PASSWORD: postgres
       PGADMIN_LISTEN_PORT: 8080
     ports: 
-      - 8081:8081
+      - 8080:8080
     depends_on: 
       - postgres
+    networks:
+      - network-postgresql
+
+networks:
+  network-postgresql:
+    external: true
