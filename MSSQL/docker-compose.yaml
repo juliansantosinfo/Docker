@@ -13,6 +13,6 @@ services:
       ACCEPT_EULA: "Y"
       MSSQL_SA_PASSWORD: "MSSQLPass123"
     volumes:
-      - ./docker/mssql:/var/opt/mssql:delegated
+      - ./data:/var/opt/mssql:delegated
     ports: 
       - 1433:1433
